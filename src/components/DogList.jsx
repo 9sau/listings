@@ -1,9 +1,10 @@
 import React from 'react';
 
-const DogList = () => {
+const DogList = (props) => {
     return(
-        <div>DogList</div>
+        props.imageList.map(({id, urls, description}) => {
+            return <img key={id} src={urls.regular} alt={description}/>
+        })
     );
 }
-
 export default DogList;
