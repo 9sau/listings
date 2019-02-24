@@ -17,6 +17,7 @@ class SearchBar extends React.Component {
               type="text"
               id="search"
               placeholder="Search..."
+              value={this.state.searchValue}
               onChange={e => this.setState({ searchValue: e.target.value })}
             />
           </div>
