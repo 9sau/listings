@@ -8,9 +8,13 @@ class ImageCard extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.imageRef);
     this.imageRef.current.addEventListener("load", this.setSpans);
   }
+
+  onClickImage = () => {
+    console.log(this.props.image.image, this.imageRef);
+    this.setState({ showModal: true });
+  };
 
   setSpans = () => {
     const height = this.imageRef.current.clientHeight;
@@ -19,10 +23,13 @@ class ImageCard extends React.Component {
   };
 
   render() {
-    const { urls, description } = this.props.image;
+    const src = process.env.PUBLIC_URL + this.props.image.image;
     return (
-      <div style={{ gridRowEnd: `span ${this.state.spans}` }}>
-        <img ref={this.imageRef} src={urls.regular} alt={description} />
+      <div
+        style={{ gridRowEnd: `span ${this.state.spans}` }}
+        onClick={() => this.props.onClickImage(this.props.image)}
+      >
+        <img ref={this.imageRef} src={src} alt="Dog" />
       </div>
     );
   }
