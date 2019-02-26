@@ -29,6 +29,7 @@ class ImageCard extends React.Component {
     const src = process.env.PUBLIC_URL + this.props.image.image;
     return (
       <div
+        className="image-card"
         style={{ gridRowEnd: `span ${this.state.spans}` }}
         onClick={() => this.props.onClickImage(this.props.image)}
       >
