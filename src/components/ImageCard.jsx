@@ -1,4 +1,5 @@
 import React from "react";
+import lozad from "lozad";
 
 class ImageCard extends React.Component {
   state = { spans: 0 };
@@ -8,6 +9,8 @@ class ImageCard extends React.Component {
   }
 
   componentDidMount() {
+    const observer = lozad();
+    observer.observe();
     this.imageRef.current.addEventListener("load", this.setSpans);
   }
 
@@ -29,7 +32,7 @@ class ImageCard extends React.Component {
         style={{ gridRowEnd: `span ${this.state.spans}` }}
         onClick={() => this.props.onClickImage(this.props.image)}
       >
-        <img ref={this.imageRef} src={src} alt="Dog" />
+        <img className="lozad" ref={this.imageRef} data-src={src} alt="Dog" />
       </div>
     );
   }
