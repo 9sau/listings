@@ -2,6 +2,9 @@ import React from "react";
 import SearchBar from "./SearchBar";
 import DogList from "./DogList";
 import axiosInstance from "../api/axios.cofig";
+import Header from "./Header";
+import Footer from "./Footer";
+
 class App extends React.Component {
   state = { imageList: [] };
   onSearchSubmit = async searchValue => {
@@ -15,8 +18,10 @@ class App extends React.Component {
   render() {
     return (
       <div className="ui container" style={{ marginTop: "10px" }}>
+        <Header />
         <SearchBar onSubmit={this.onSearchSubmit} />
         <DogList imageList={this.state.imageList} />
+        <Footer />
       </div>
     );
   }
