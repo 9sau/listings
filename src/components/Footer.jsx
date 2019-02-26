@@ -2,8 +2,8 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer class="site-footer">
-      <p>Built by a wonderful developer for Asana.</p>
+    <footer className="site-footer">
+      <h2>Built by a wonderful developer for Asana.</h2>
     </footer>
   );
 };

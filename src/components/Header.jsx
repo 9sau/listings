@@ -2,9 +2,9 @@ import React from "react";
 
 const Header = () => {
   return (
-    <header class="site-header">
+    <header className="site-header">
       <h1>Puppy image gallery</h1>
-      <blockquote class="site-header__quote">
+      <blockquote className="site-header__quote">
         <p>
           A dog will teach you unconditional love. If you can have that in your
           life, things won't be too bad.
