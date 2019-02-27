@@ -1,7 +1,5 @@
 import React from "react";
-import { connect } from "react-redux";
 
-import { loadImages } from "../action-creators";
 class SearchBar extends React.Component {
   state = { searchValue: "" };
 
@@ -11,7 +9,7 @@ class SearchBar extends React.Component {
   }
   onFormSubmit = event => {
     event.preventDefault();
-    //this.props.onSubmit(this.state.searchValue);
+    this.props.onSearchSubmit(this.state.searchValue);
   };
 
   render() {
@@ -33,9 +31,4 @@ class SearchBar extends React.Component {
   }
 }
 
-export default connect(
-  null,
-  {
-    loadImages
-  }
-)(SearchBar);
+export default SearchBar;

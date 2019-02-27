@@ -13,6 +13,8 @@ const Modal = props => {
     props.openModal(false);
     props.selectImage(null);
   };
+
+  const { urls, description } = props.image;
   return (
     <div className={className}>
       <div className="custom-modal">
@@ -20,7 +22,7 @@ const Modal = props => {
           &times;
         </span>
         <div className="custom-modal-body">
-          <img src={props.image.image} alt="" />
+          <img src={urls.regular} alt={description} />
         </div>
       </div>
     </div>

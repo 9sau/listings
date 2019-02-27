@@ -1,160 +1,158 @@
-.dog-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    grid-gap: 0 5px;
-    grid-auto-rows: 10px;
+.image-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-gap: 0 5px;
+  grid-auto-rows: 10px;
 }
 
-.dog-list img {
-    width: 250px;
-    grid-row-end: span 2;
+.image-list img {
+  width: 250px;
+  grid-row-end: span 2;
 }
-
 
 /* Globals */
 
 :root {
-    --font-sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    --font-serif: Georgia, serif;
-    --color-secondary: #333;
-    --color-link: #635ac7;
-    font-family: var(--font-sans);
-    font-weight: normal;
-    line-height: 1.5;
+  --font-sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-serif: Georgia, serif;
+  --color-secondary: #333;
+  --color-link: #635ac7;
+  font-family: var(--font-sans);
+  font-weight: normal;
+  line-height: 1.5;
 }
 
 html,
 body {
-    height: 100%;
-    min-height: 100%;
+  height: 100%;
+  min-height: 100%;
 }
 
 .main-wrapper {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    padding: 10px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 10px;
 }
 
-.main-wrapper>.main {
-    flex: 1 0 auto;
+.main-wrapper > .main {
+  flex: 1 0 auto;
 }
 
 a {
-    color: var(--color-link);
+  color: var(--color-link);
 }
-
 
 /* Snippets */
 
 .site-header {
-    padding-bottom: 2rem;
-    padding-top: 2rem;
-    text-align: center;
+  padding-bottom: 2rem;
+  padding-top: 2rem;
+  text-align: center;
 }
 
 .site-header__quote {
-    color: var(--color);
-    font-family: var(--font-serif);
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 460px;
+  color: var(--color);
+  font-family: var(--font-serif);
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 460px;
 }
 
 .site-footer {
-    color: var(--color);
-    font-family: var(--font-serif);
-    text-align: center;
-    width: 100%;
-    padding-top: 15px;
-    background-color: darkseagreen;
-    padding: 10px;
-    flex: 0 0 auto;
+  color: var(--color);
+  font-family: var(--font-serif);
+  text-align: center;
+  width: 100%;
+  padding-top: 15px;
+  background-color: darkseagreen;
+  padding: 10px;
+  flex: 0 0 auto;
 }
 
-.image-card>img {
-    border-radius: 2px;
+.image-card > img {
+  border-radius: 2px;
 }
 
 .modal-wrapper {
-    display: none;
-    position: fixed;
-    left: 0;
-    top: 0;
-    z-index: 1;
-    height: 100%;
-    width: 100%;
-    overflow: auto;
-    background-color: rgb(0, 0, 0);
-    background-color: rgba(0, 0, 0, 0.4);
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 .custom-modal {
-    background-color: #fefefe;
-    margin: auto;
-    padding: 15px;
-    border: 1px solid #888;
-    width: 80%;
-    height: auto;
-    -webkit-animation-name: zoom;
-    -webkit-animation-duration: 0.6s;
-    animation-name: zoom;
-    animation-duration: 0.6s;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 15px;
+  border: 1px solid #888;
+  width: 80%;
+  height: auto;
+  -webkit-animation-name: zoom;
+  -webkit-animation-duration: 0.6s;
+  animation-name: zoom;
+  animation-duration: 0.6s;
 }
 
 .custom-modal-body {
-    text-align: center;
+  text-align: center;
 }
 
-.custom-modal-body>img {
-    padding: 5px;
-    border-radius: 5px;
-    transition: 0.3s;
-    width: 100%;
-    height: 100%;
-    max-height: 90vh;
-    /*max-width: 90vw; */
+.custom-modal-body > img {
+  padding: 5px;
+  border-radius: 5px;
+  transition: 0.3s;
+  width: 100%;
+  height: 100%;
+  max-height: 90vh;
+  /*max-width: 90vw; */
 }
 
 .custom-modal-close {
-    display: flex;
-    justify-content: flex-end;
-    color: #aaaaaa;
-    font-size: 28px;
-    font-weight: bold;
+  display: flex;
+  justify-content: flex-end;
+  color: #aaaaaa;
+  font-size: 28px;
+  font-weight: bold;
 }
 
 .custom-modal-close:hover,
 .custom-modal-close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .display-none {
-    display: none;
+  display: none;
 }
 
 .flex-center {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
 @-webkit-keyframes zoom {
-    from {
-        -webkit-transform: scale(0)
-    }
-    to {
-        -webkit-transform: scale(1)
-    }
+  from {
+    -webkit-transform: scale(0);
+  }
+  to {
+    -webkit-transform: scale(1);
+  }
 }
 
 @keyframes zoom {
-    from {
-        transform: scale(0)
-    }
-    to {
-        transform: scale(1)
-    }
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
 }

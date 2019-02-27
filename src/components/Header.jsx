@@ -3,13 +3,10 @@ import React from "react";
 const Header = () => {
   return (
     <header className="site-header">
-      <h1>Puppy image gallery</h1>
+      <h1>Image gallery</h1>
       <blockquote className="site-header__quote">
-        <p>
-          A dog will teach you unconditional love. If you can have that in your
-          life, things won't be too bad.
-        </p>
-        <cite>&mdash;Robert Wagner</cite>
+        <p>Search for all sorts of images using the search bar.</p>
+        <cite>&mdash;Saurabh Jain</cite>
       </blockquote>
     </header>
   );

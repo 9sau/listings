@@ -1,8 +1,8 @@
 import React from "react";
 import SearchBar from "./SearchBar";
 import ImageList from "./ImageList";
-//import axios from "../api/axios.cofig";
-import axios from "axios";
+import axios from "../api/axios.cofig";
+//import axios from "axios";
 import Header from "./Header";
 import Footer from "./Footer";
 import Modal from "./Modal";
@@ -11,27 +11,27 @@ import { loadImages, selectImage, openModal } from "./../action-creators";
 
 class App extends React.Component {
   state = { imageList: [], selectedImage: null, showModal: false };
+  //url = process.env.PUBLIC_URL + "/assets/json/dogs.json";
+  url = "/search/photos";
 
   constructor(props) {
     super(props);
   }
   async componentDidMount() {
-    const response = await axios.get(
-      process.env.PUBLIC_URL + "/assets/json/dogs.json"
-    );
+    /* const response = await axios.get(this.url);
     if (response && response.data) {
       this.props.loadImages(response.data.dogs);
-    }
+    } */
 
-    //this.onSearchSubmit("dogs");
+    this.onSearchSubmit("dogs");
   }
 
   onSearchSubmit = async searchValue => {
-    const response = await axios.get("/search/photos", {
+    const response = await axios.get(this.url, {
       params: { query: searchValue }
     });
     console.log(response);
-    //this.props.loadImages(response);
+    this.props.loadImages(response.data.results);
   };
 
   onClickImage = image => {
@@ -48,7 +48,7 @@ class App extends React.Component {
         <Header />
         <div className="main-wrapper">
           <div className="main">
-            <SearchBar onSubmit={this.onSearchSubmit} />
+            <SearchBar onSearchSubmit={this.onSearchSubmit} />
             <ImageList />
             <div className="flex-center">
               <Modal />

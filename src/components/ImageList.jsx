@@ -1,14 +1,14 @@
-import "./../styles.css";
+import "../styles.css";
 import React from "react";
 import ImageCard from "./ImageCard";
 import { connect } from "react-redux";
 
 const ImageList = props => {
-  const images = props.imageList.map((image, id) => {
-    return <ImageCard key={id} image={image} />;
+  const images = props.imageList.map(image => {
+    return <ImageCard key={image.id} image={image} />;
   });
 
-  return <div className="dog-list">{images}</div>;
+  return <div className="image-list">{images}</div>;
 };
 
 const mapStateToProps = state => {

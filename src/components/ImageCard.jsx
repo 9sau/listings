@@ -7,6 +7,7 @@ import { selectImage, openModal } from "../action-creators";
 class ImageCard extends React.Component {
   state = { spans: 0 };
   constructor(props) {
+    console.log("Imagecard props", props);
     super(props);
     this.imageRef = React.createRef();
   }
@@ -29,14 +30,20 @@ class ImageCard extends React.Component {
   };
 
   render() {
-    const src = process.env.PUBLIC_URL + this.props.image.image;
+    //const src = process.env.PUBLIC_URL + this.props.image.image;
+    const { urls, description } = this.props.image;
     return (
       <div
         className="image-card"
         style={{ gridRowEnd: `span ${this.state.spans}` }}
         onClick={this.onClickImage}
       >
-        <img className="lozad" ref={this.imageRef} data-src={src} alt="Dog" />
+        <img
+          className="lozad"
+          ref={this.imageRef}
+          data-src={urls.regular}
+          alt={description}
+        />
       </div>
     );
   }
