@@ -14,11 +14,6 @@ class ImageCard extends React.Component {
     this.imageRef.current.addEventListener("load", this.setSpans);
   }
 
-  onClickImage = () => {
-    console.log(this.props.image.image, this.imageRef);
-    this.setState({ showModal: true });
-  };
-
   setSpans = () => {
     const height = this.imageRef.current.clientHeight;
     const spans = Math.ceil(height / 10);
