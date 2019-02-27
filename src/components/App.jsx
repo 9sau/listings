@@ -1,32 +1,46 @@
 import React from "react";
 import SearchBar from "./SearchBar";
-import DogList from "./DogList";
-import axios from "../api/axios.cofig";
+import ImageList from "./ImageList";
+//import axios from "../api/axios.cofig";
+import axios from "axios";
 import Header from "./Header";
 import Footer from "./Footer";
 import Modal from "./Modal";
+import { connect } from "react-redux";
+import { loadImages, selectImage, openModal } from "./../action-creators";
 
 class App extends React.Component {
   state = { imageList: [], selectedImage: null, showModal: false };
 
+  constructor(props) {
+    super(props);
+  }
   async componentDidMount() {
-    const response = await axios.get("/dogs.json");
-    if (response && response.data)
-      this.setState({ imageList: response.data.dogs });
+    const response = await axios.get(
+      process.env.PUBLIC_URL + "/assets/json/dogs.json"
+    );
+    if (response && response.data) {
+      this.props.loadImages(response.data.dogs);
+    }
+
+    //this.onSearchSubmit("dogs");
   }
 
-  /* onSearchSubmit = async searchValue => {
+  onSearchSubmit = async searchValue => {
     const response = await axios.get("/search/photos", {
       params: { query: searchValue }
     });
-  }; */
+    console.log(response);
+    //this.props.loadImages(response);
+  };
 
   onClickImage = image => {
-    this.setState({ selectedImage: image, showModal: true });
+    this.props.selectImage(image);
+    this.props.showModal(true);
   };
 
   onClickClose = () => {
-    this.setState({ showModal: false });
+    this.props.showModal(false);
   };
   render() {
     return (
@@ -34,17 +48,10 @@ class App extends React.Component {
         <Header />
         <div className="main-wrapper">
           <div className="main">
-            {/* <SearchBar onSubmit={this.onSearchSubmit} /> */}
-            <DogList
-              imageList={this.state.imageList}
-              onClickImage={this.onClickImage}
-            />
+            <SearchBar onSubmit={this.onSearchSubmit} />
+            <ImageList />
             <div className="flex-center">
-              <Modal
-                showModal={this.state.showModal}
-                image={this.state.selectedImage}
-                onClickClose={this.onClickClose}
-              />
+              <Modal />
             </div>
           </div>
         </div>
@@ -54,4 +61,16 @@ class App extends React.Component {
   }
 }
 
-export default App;
+function mapStateToProps(state) {
+  if (state) {
+    return {
+      imageList: state.imageList,
+      selectedImage: state.selectedImage,
+      showModal: state.openModal
+    };
+  }
+}
+export default connect(
+  mapStateToProps,
+  { loadImages, selectImage, showModal: openModal }
+)(App);

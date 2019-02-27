@@ -1,11 +1,17 @@
 import React from "react";
+import { connect } from "react-redux";
 
+import { loadImages } from "../action-creators";
 class SearchBar extends React.Component {
   state = { searchValue: "" };
 
+  constructor(props) {
+    super(props);
+    console.log("Searchbar", props);
+  }
   onFormSubmit = event => {
     event.preventDefault();
-    this.props.onSubmit(this.state.searchValue);
+    //this.props.onSubmit(this.state.searchValue);
   };
 
   render() {
@@ -27,4 +33,9 @@ class SearchBar extends React.Component {
   }
 }
 
-export default SearchBar;
+export default connect(
+  null,
+  {
+    loadImages
+  }
+)(SearchBar);
