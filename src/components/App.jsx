@@ -7,41 +7,31 @@ import Header from "./Header";
 import Footer from "./Footer";
 import Modal from "./Modal";
 import { connect } from "react-redux";
-import { loadImages, selectImage, openModal } from "./../action-creators";
+import { loadImages } from "./../action-creators";
 
 class App extends React.Component {
   state = { imageList: [], selectedImage: null, showModal: false };
-  //url = process.env.PUBLIC_URL + "/assets/json/dogs.json";
+  /* url = process.env.PUBLIC_URL + "/assets/json/dogs.json"; */
   url = "/search/photos";
 
-  constructor(props) {
-    super(props);
-  }
   async componentDidMount() {
-    /* const response = await axios.get(this.url);
+    /* 
+    const response = await axios.get(this.url);
     if (response && response.data) {
       this.props.loadImages(response.data.dogs);
-    } */
+    }
+    */
 
-    this.onSearchSubmit("dogs");
+    this.onSearchSubmit(this.props.searchValue);
   }
 
-  onSearchSubmit = async searchValue => {
+  onSearchSubmit = async () => {
     const response = await axios.get(this.url, {
-      params: { query: searchValue }
+      params: { query: this.props.searchValue }
     });
-    console.log(response);
     this.props.loadImages(response.data.results);
   };
 
-  onClickImage = image => {
-    this.props.selectImage(image);
-    this.props.showModal(true);
-  };
-
-  onClickClose = () => {
-    this.props.showModal(false);
-  };
   render() {
     return (
       <div className="ui container" style={{ marginTop: "10px" }}>
@@ -62,15 +52,15 @@ class App extends React.Component {
 }
 
 function mapStateToProps(state) {
+  console.log("App state", state);
   if (state) {
     return {
       imageList: state.imageList,
-      selectedImage: state.selectedImage,
-      showModal: state.openModal
+      searchValue: state.searchValue
     };
   }
 }
 export default connect(
   mapStateToProps,
-  { loadImages, selectImage, showModal: openModal }
+  { loadImages }
 )(App);

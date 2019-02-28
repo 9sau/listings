@@ -19,9 +19,9 @@ export const openModal = showModal => {
   };
 };
 
-export const setSpans = span => {
+export const searchBarQuery = query => {
   return {
-    type: "SET_SPAN",
-    payload: span
+    type: "SEARCH_QUERY",
+    payload: query
   };
 };

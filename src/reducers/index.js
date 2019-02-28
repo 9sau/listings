@@ -15,8 +15,13 @@ const openModalReducer = (showModal = false, action) => {
   return showModal;
 };
 
+const searchBarQueryReducer = (query = "dogs", action) => {
+  if (action.type === "SEARCH_QUERY") return action.payload;
+  return query;
+};
 export default combineReducers({
   imageList: loadImagesReducer,
   selectedImage: selectedImageReducer,
-  showModal: openModalReducer
+  showModal: openModalReducer,
+  searchValue: searchBarQueryReducer
 });

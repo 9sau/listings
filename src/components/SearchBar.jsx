@@ -1,15 +1,11 @@
 import React from "react";
+import { connect } from "react-redux";
+import { searchBarQuery } from "../action-creators";
 
 class SearchBar extends React.Component {
-  state = { searchValue: "" };
-
-  constructor(props) {
-    super(props);
-    console.log("Searchbar", props);
-  }
   onFormSubmit = event => {
     event.preventDefault();
-    this.props.onSearchSubmit(this.state.searchValue);
+    this.props.onSearchSubmit();
   };
 
   render() {
@@ -21,8 +17,10 @@ class SearchBar extends React.Component {
               type="text"
               id="search"
               placeholder="Search..."
-              value={this.state.searchValue}
-              onChange={e => this.setState({ searchValue: e.target.value })}
+              value={this.props.searchValue}
+              onChange={e => {
+                this.props.searchBarQuery(e.target.value);
+              }}
             />
           </div>
         </form>
@@ -31,4 +29,13 @@ class SearchBar extends React.Component {
   }
 }
 
-export default SearchBar;
+function mapStateToProps(state) {
+  if (state)
+    return {
+      searchValue: state.searchValue
+    };
+}
+export default connect(
+  mapStateToProps,
+  { searchBarQuery }
+)(SearchBar);
